@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<!--
+	Aerial by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html ng-app="myApp">
+<head>
+	<title>Aerial by HTML5 UP</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/sweetalert.css" />
+	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+</head>
+<body class="loading" ng-controller="myCtrl">
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				</div>
+				<div class="modal-body">
+					<h1>Name of the Project</h1>
+					<p>Some shit regarding the project</p>
+					<h1>Name of the Project</h1>
+					<p>Some shit regarding the project</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="wrapper">
+		<div id="bg"></div>
+		<div id="overlay"></div>
+		<div id="main">
+
+			<!-- Header -->
+			<header id="header">
+				<h1>Name of the Project</h1>
+				<p>Some shit regarding the project</p>
+				<nav>
+					<ul>
+						<li><a href="#" ng-click="openModal()" class="icon fa-paypal"><span class="label">PayPal</span></a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<span class="copyright">&copy; <a href="http://html5up.net">Haridarshan H.S.</a>.</span>
+			</footer>
+
+		</div>
+	</div>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script>
+	window.onload = function() { document.body.className = ''; }
+	window.ontouchmove = function() { return false; }
+	window.onorientationchange = function() { document.body.scrollTop = 0; }
+	</script>
+	<script src="js/frameworks/jquery.min.js"></script>
+	<script src="js/frameworks/bootstrap.min.js"></script>
+	<script src="js/frameworks/angular.min.js"></script>
+	<script src="js/frameworks/sweetalert.min.js"></script>
+	<script src="js/angular-login.js"></script>
+	
+</body>
+</html>
