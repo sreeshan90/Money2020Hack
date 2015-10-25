@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 
 paypal.configure({
   'mode': 'sandbox', //sandbox or live
-  'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
-  'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
+  'client_id': 'AeKFTEWOLJ3zEjq116kQAXhVy2-RINQNC7Er4aakfhFWkaOmDL4yZS3IkbG7RaZqPolH60G7e4wOIII5',
+  'client_secret': 'EJctgdv0F9vbM04pcf5TiUmwkI-XRZsumjhA-yBhjNHc_fIMEdr-nOXHhkZ_bHXavTQXAhSv074fsZv5'
 });
 app.listen(1337, '127.0.0.1', function() {
     console.log("server starting on " + 1337);
@@ -65,6 +65,7 @@ app.get('/createPayment',function(req,res){
             throw error;
         } else {
             flag=true;
+            res.send(payment);
             res.end();
         }
     });
@@ -72,7 +73,7 @@ app.get('/createPayment',function(req,res){
 
 var search_attr = {
     "start_invoice_date": "2010-05-10 PST",
-    "end_invoice_date": "2014-04-10 PST",
+    "end_invoice_date": "2015-04-10 PST",
     "page": 1,
     "page_size": 3,
     "total_count_required": true
@@ -83,6 +84,8 @@ app.get('/checkPayment',function(req,res){
         if (error) {
             throw error;
         } else {
+            res.send(results);
+            res.end();
             if(flag){
                 flag=false;
                 res.end('1');
