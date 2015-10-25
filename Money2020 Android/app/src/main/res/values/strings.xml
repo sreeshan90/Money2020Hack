@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">My Application</string>
+    <!-- Accessibility description sent when user starts drawing a lock pattern. -->
+    <string name="lockscreen_access_pattern_start">Pattern started</string>
+    <!-- Accessibility description sent when the pattern times out and is cleared. -->
+    <string name="lockscreen_access_pattern_cleared">Pattern cleared</string>
+    <!-- Accessibility description sent when user adds a cell to the pattern. -->
+    <string name="lockscreen_access_pattern_cell_added">Cell added</string>
+    <!-- Accessibility description sent when user completes drawing a pattern. -->
+    <string name="lockscreen_access_pattern_detected">Pattern completed</string>
+    <string name="lock_tip_pattern_ready">Draw pattern：</string>
+    <string name="lock_tip_pattern_start">Release finger after done：</string>
+    <string name="lock_tip_pattern_error_tooless">Connect min 4 pts：</string>
+    <string name="lock_tip_pattern_recored">Recorded</string>
+    <string name="lock_tip_pattern_check">Draw to confirm：</string>
+    <string name="lock_tip_pattern_error_checkerror">Error retry</string>
+    <string name="lock_tip_pattern_done">New Unlock pattern：</string>
+    <string name="verify_tip_input">new unlock pattern：</string>
+    <string name="verify_tip_error">worng pwd</string>
+    <string name="lock_btn_next">next</string>
+    <string name="lock_btn_done">done</string>
+    <string name="btn_cancel">cancel</string>
+    <string name="btn_retry">retry</string>
 </resources>

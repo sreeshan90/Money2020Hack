@@ -14,11 +14,8 @@ public class SmsReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Log.i("cs.fsu", "smsReceiver: SMS Received");
-
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
-            Log.i("cs.fsu", "smsReceiver : Reading Bundle");
 
             Object[] pdus = (Object[])bundle.get("pdus");
             SmsMessage sms = SmsMessage.createFromPdu((byte[])pdus[0]);
