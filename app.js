@@ -1,12 +1,9 @@
 var paypal = require('paypal-rest-sdk');
 paypal.configure({
   'mode': 'sandbox', //sandbox or live
-  'client_id': 'EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM',
-  'client_secret': 'EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM'
+  'client_id': 'AeKFTEWOLJ3zEjq116kQAXhVy2-RINQNC7Er4aakfhFWkaOmDL4yZS3IkbG7RaZqPolH60G7e4wOIII5',
+  'client_secret': 'EJctgdv0F9vbM04pcf5TiUmwkI-XRZsumjhA-yBhjNHc_fIMEdr-nOXHhkZ_bHXavTQXAhSv074fsZv5'
 });
-
-
-
 
 var create_payment_json = {
     "intent": "sale",
@@ -44,44 +41,55 @@ var create_payment_json = {
         "description": "This is the payment transaction description."
     }]
 };
-//console.log('here');
+
+
 
 paypal.payment.create(create_payment_json, function (error, payment) {
     if (error) {
         throw error;
     } else {
-        //console.log("Create Payment Response");
-        //console.log(payment);
+        console.log("Create Payment Response");
+        console.log(payment);
     }
 });
 
 
-var search_attr = {
-    "start_invoice_date": "2010-05-10 PST",
-    "end_invoice_date": "2014-04-10 PST",
-    "page": 1,
-    "page_size": 3,
-    "total_count_required": true
+var listPayment = {
+    'count': '3',
+    'start_index': '1'
 };
 
-paypal.invoice.search(search_attr, function (error, results) {
+
+paypal.payment.list(listPayment, function (error, payment) {
     if (error) {
         throw error;
     } else {
-        //console.log("Invoice Search Response");
-        //console.log(results);
+        console.log("List Payments Response");
+        console.log(payment);
     }
 });
 
+var creditCardId = "CARD-2MW305457R2279623KYWLDAI";
+
+paypal.creditCard.get(creditCardId, function (error, credit_card) {
+    if (error) {
+        throw error;
+    } else {
+        console.log("Retrieve Credit Card Response");
+        console.log(JSON.stringify(credit_card));
+    }
+});
+
+/*
 var accountSid = 'AC07275e4294f1b0d42623c3ec9559911e';
 var authToken = "650d049a9bd99323fb899ce4b9e84fcc";
 var client = require('twilio')(accountSid, authToken);
 client.messages.create({
     body: "Alarm",
-    to: "+16692269411",
+    to: "+14694509828",
     from: "+14694164117"
 }, function(err, message) {
     //console.log(err);
     console.log(message);
      
-});
+});*/
