@@ -5,30 +5,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-
 import java.util.Locale;
 
 /**
  * Created by eharihs on 10/24/2015.
  */
 public class SpeakActivity extends Activity implements TextToSpeech.OnInitListener {
-
-
-
     private TextToSpeech mTts;
     String message;
-
-
+    protected MainView mView = null;
+    private static final int REQUEST_CODE_VERIFY_LOCK_PATTERN = 10002;
 
     /** Called when the activity is first created. */
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
+        mView = new MainView(this);
+
         Intent i=getIntent();
         message=i.getType();
         mTts = new TextToSpeech(this, this);
@@ -54,6 +48,10 @@ public class SpeakActivity extends Activity implements TextToSpeech.OnInitListen
                 // Lanuage data is missing or the language is not supported.
                 Log.e("404", "Language is not available.");
             }
+
+            Intent intent = new Intent(this, VerifyLockPatternActivity.class);
+            startActivityForResult(intent, REQUEST_CODE_VERIFY_LOCK_PATTERN);
+
         } else {
             // Initialization failed.
             Log.e("404", "Could not initialize TextToSpeech.");
@@ -67,10 +65,24 @@ public class SpeakActivity extends Activity implements TextToSpeech.OnInitListen
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case REQUEST_CODE_VERIFY_LOCK_PATTERN:
+                if (resultCode == Activity.RESULT_OK) {
+                    mView.updateView(MainView.STATUS_LOCK_PATTERN_VERFIED);
+                } else {
+                    mView.updateView(MainView.STATUS_LOCK_PATTERN_VERFIED_FAILED);
+                }
+                break;
+        }
+    }
+
+    @Override
     public void onDestroy() {
         if (mTts != null) {
             mTts.stop();
             mTts.shutdown();
+            mView = null;
         }
         super.onDestroy();
     }
